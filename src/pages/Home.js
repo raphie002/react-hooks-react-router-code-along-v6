@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import UserCard from "../components/UserCard";
+import NavBar from "../components/NavBar"; // Import NavBar
 
 function Home() {
   const [users, setUsers] = useState([])
@@ -8,9 +9,9 @@ function Home() {
     fetch("http://localhost:4000/users")
       .then(r => r.json())
       .then(data => setUsers(data))
-      .catch(error => console.error(error));
-  }, []);
-  
+      .catch(error => console.error(error))
+  }, [])
+
   const userList = users.map(user =>{
     return <UserCard key={user.id} user={user}/>
   });
@@ -18,7 +19,7 @@ function Home() {
   return (
     <>
       <header>
-        {/* place NavBar here */}
+        <NavBar /> {/* Place NavBar here */}
       </header>
       <main>
         <h1>Home!</h1>
@@ -26,6 +27,6 @@ function Home() {
       </main>
     </>
   );
-};
+}
 
 export default Home;
